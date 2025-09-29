@@ -1,0 +1,87 @@
+#include <stdio.h>
+
+int main() {
+    int a, b, choice, subChoice;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+
+    printf("\n1. Relational Operators");
+    printf("\n2. Logical Operators");
+    printf("\n3. Bitwise Operators");
+    printf("\n4. Assignment Operators");
+    printf("\n5. Increment/Decrement Operators");
+    printf("\nEnter your choice: ");
+    scanf("%d", &choice);
+
+    switch(choice) {
+        case 1:
+            printf("\n1. >\n2. <\n3. ==\n4. !=\n5. >=\n6. <=\n");
+            scanf("%d", &subChoice);
+            switch(subChoice) {
+                case 1: printf("%d > %d = %d\n", a, b, a > b); break;
+                case 2: printf("%d < %d = %d\n", a, b, a < b); break;
+                case 3: printf("%d == %d = %d\n", a, b, a == b); break;
+                case 4: printf("%d != %d = %d\n", a, b, a != b); break;
+                case 5: printf("%d >= %d = %d\n", a, b, a >= b); break;
+                case 6: printf("%d <= %d = %d\n", a, b, a <= b); break;
+                default: printf("Invalid sub-choice\n");
+            }
+            break;
+
+        case 2:
+            printf("\n1. &&\n2. ||\n3. !\n");
+            scanf("%d", &subChoice);
+            switch(subChoice) {
+                case 1: printf("a && b = %d\n", a && b); break;
+                case 2: printf("a || b = %d\n", a || b); break;
+                case 3: printf("!a = %d\n", !a); break;
+                default: printf("Invalid sub-choice\n");
+            }
+            break;
+
+        case 3:
+            printf("\n1. &\n2. |\n3. ^\n4. <<\n5. >>\n");
+            scanf("%d", &subChoice);
+            switch(subChoice) {
+                case 1: printf("a & b = %d\n", a & b); break;
+                case 2: printf("a | b = %d\n", a | b); break;
+                case 3: printf("a ^ b = %d\n", a ^ b); break;
+                case 4: printf("a << 1 = %d\n", a << 1); break;
+                case 5: printf("a >> 1 = %d\n", a >> 1); break;
+                default: printf("Invalid sub-choice\n");
+            }
+            break;
+
+        case 4:
+            printf("\n1. =\n2. +=\n3. -=\n4. *=\n5. /=\n6. %%=\n");
+            scanf("%d", &subChoice);
+            switch(subChoice) {
+                case 1: a = b; printf("a = %d\n", a); break;
+                case 2: a += b; printf("a += b -> %d\n", a); break;
+                case 3: a -= b; printf("a -= b -> %d\n", a); break;
+                case 4: a *= b; printf("a *= b -> %d\n", a); break;
+                case 5: if(b != 0) { a /= b; printf("a /= b -> %d\n", a); } else printf("Division by zero not allowed\n"); break;
+                case 6: if(b != 0) { a %= b; printf("a %%= b -> %d\n", a); } else printf("Division by zero not allowed\n"); break;
+                default: printf("Invalid sub-choice\n");
+            }
+            break;
+
+        case 5:
+            printf("\n1. Pre-increment\n2. Post-increment\n3. Pre-decrement\n4. Post-decrement\n");
+            scanf("%d", &subChoice);
+            switch(subChoice) {
+                case 1: printf("++a = %d\n", ++a); break;
+                case 2: printf("a++ = %d\n", a++); printf("After a++ = %d\n", a); break;
+                case 3: printf("--a = %d\n", --a); break;
+                case 4: printf("a-- = %d\n", a--); printf("After a-- = %d\n", a); break;
+                default: printf("Invalid sub-choice\n");
+            }
+            break;
+
+        default:
+            printf("Invalid main choice\n");
+    }
+
+    return 0;
+}
