@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+float calculate(float basic, int metro)
+{
+    float hra, da, total;
+    if (metro == 1)
+        hra = 0.15 * basic;
+    else
+        hra = 0.10 * basic;
+    da = 0.05 * basic;
+    total = basic + hra + da;
+    return total;
+}
+
+int main()
+{
+    float basic, total;
+    int metro;
+    printf("Enter basic salary: ");
+    scanf("%f", &basic);
+    printf("Enter 1 if metro city, 0 if non-metro: ");
+    scanf("%d", &metro);
+    total = calculate(basic, metro);
+    printf("Monthly Salary = %.2f\n", total);
+    return 0;
+}
