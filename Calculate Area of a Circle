@@ -1,0 +1,17 @@
+#include <stdio.h>
+#define PI 3.1416
+
+float area(float r)
+{
+    return PI * r * r;
+}
+
+int main()
+{
+    float radius, result;
+    printf("Enter radius: ");
+    scanf("%f", &radius);
+    result = area(radius);
+    printf("Area of circle = %.2f\n", result);
+    return 0;
+}
