@@ -1,0 +1,125 @@
+/*Relational, logical, bitwise, assignment, increment decrement operators implementation (using nested switch)*/
+
+#include <stdio.h>
+
+int main() {
+    int choice, subChoice;
+    int a, b;
+
+    printf("------ Operator Demonstration ------\n");
+    printf("1. Relational Operators\n");
+    printf("2. Logical Operators\n");
+    printf("3. Bitwise Operators\n");
+    printf("4. Assignment Operators\n");
+    printf("5. Increment/Decrement Operators\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1: // Relational
+            printf("\nRelational Operators:\n");
+            printf("Enter two numbers: ");
+            scanf("%d %d", &a, &b);
+
+            printf("1. >\n2. <\n3. ==\n4. !=\n5. >=\n6. <=\n");
+            printf("Enter your choice: ");
+            scanf("%d", &subChoice);
+
+            switch (subChoice) {
+                case 1: printf("%d > %d = %d\n", a, b, a > b); break;
+                case 2: printf("%d < %d = %d\n", a, b, a < b); break;
+                case 3: printf("%d == %d = %d\n", a, b, a == b); break;
+                case 4: printf("%d != %d = %d\n", a, b, a != b); break;
+                case 5: printf("%d >= %d = %d\n", a, b, a >= b); break;
+                case 6: printf("%d <= %d = %d\n", a, b, a <= b); break;
+                default: printf("Invalid choice!\n");
+            }
+            break;
+
+        case 2: // Logical
+            printf("\nLogical Operators:\n");
+            printf("Enter two numbers (0 or 1): ");
+            scanf("%d %d", &a, &b);
+
+            printf("1. &&\n2. ||\n3. ! (on first number)\n");
+            printf("Enter your choice: ");
+            scanf("%d", &subChoice);
+
+            switch (subChoice) {
+                case 1: printf("%d && %d = %d\n", a, b, a && b); break;
+                case 2: printf("%d || %d = %d\n", a, b, a || b); break;
+                case 3: printf("!%d = %d\n", a, !a); break;
+                default: printf("Invalid choice!\n");
+            }
+            break;
+
+        case 3: // Bitwise
+            printf("\nBitwise Operators:\n");
+            printf("Enter two numbers: ");
+            scanf("%d %d", &a, &b);
+
+            printf("1. &\n2. |\n3. ^\n4. ~ (on first number)\n5. << (a<<1)\n6. >> (a>>1)\n");
+            printf("Enter your choice: ");
+            scanf("%d", &subChoice);
+
+            switch (subChoice) {
+                case 1: printf("%d & %d = %d\n", a, b, a & b); break;
+                case 2: printf("%d | %d = %d\n", a, b, a | b); break;
+                case 3: printf("%d ^ %d = %d\n", a, b, a ^ b); break;
+                case 4: printf("~%d = %d\n", a, ~a); break;
+                case 5: printf("%d << 1 = %d\n", a, a << 1); break;
+                case 6: printf("%d >> 1 = %d\n", a, a >> 1); break;
+                default: printf("Invalid choice!\n");
+            }
+            break;
+
+        case 4: // Assignment
+            printf("\nAssignment Operators:\n");
+            printf("Enter two numbers: ");
+            scanf("%d %d", &a, &b);
+
+            printf("1. =\n2. +=\n3. -=\n4. *=\n5. /=\n6. %%=\n");
+            printf("Enter your choice: ");
+            scanf("%d", &subChoice);
+
+            switch (subChoice) {
+                case 1: a = b; printf("a = b -> a = %d\n", a); break;
+                case 2: a += b; printf("a += b -> a = %d\n", a); break;
+                case 3: a -= b; printf("a -= b -> a = %d\n", a); break;
+                case 4: a *= b; printf("a *= b -> a = %d\n", a); break;
+                case 5: 
+                    if (b != 0) { a /= b; printf("a /= b -> a = %d\n", a); }
+                    else { printf("Error: Division by zero!\n"); }
+                    break;
+                case 6: 
+                    if (b != 0) { a %= b; printf("a %%= b -> a = %d\n", a); }
+                    else { printf("Error: Modulus by zero!\n"); }
+                    break;
+                default: printf("Invalid choice!\n");
+            }
+            break;
+
+        case 5: // Increment / Decrement
+            printf("\nIncrement/Decrement Operators:\n");
+            printf("Enter a number: ");
+            scanf("%d", &a);
+
+            printf("1. ++a\n2. a++\n3. --a\n4. a--\n");
+            printf("Enter your choice: ");
+            scanf("%d", &subChoice);
+
+            switch (subChoice) {
+                case 1: printf("++a = %d\n", ++a); break;
+                case 2: printf("a++ = %d (after increment: %d)\n", a, a+1); break;
+                case 3: printf("--a = %d\n", --a); break;
+                case 4: printf("a-- = %d (after decrement: %d)\n", a, a-1); break;
+                default: printf("Invalid choice!\n");
+            }
+            break;
+
+        default:
+            printf("Invalid main choice!\n");
+    }
+
+    return 0;
+}
