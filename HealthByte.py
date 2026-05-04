@@ -7,7 +7,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import re
 import datetime
 
-# --- CONFIGURATION & CONSTANTS ---
+# Configuration and constants
 CONFIG={"sugar_limit":15,"sodium_limit":400,"fat_limit":20,"energy_limit":400}
 WHO_DAILY={"energy":2000,"sugar":25,"sodium":2000,"fat":70}
 CONDITIONS_LIST=["None","Diabetes","Hypertension","Heart Disease","Asthma","Kidney Disease","Obesity"]
@@ -30,12 +30,12 @@ ADDITIVES_DATA=[
 ]
 df_additives=pd.DataFrame(ADDITIVES_DATA)
 
-# --- IN-MEMORY STORAGE ---
+# In-memory storage
 session_users={}
 session_logs=[]
 current_active_user=None
 
-# --- FUNCTIONS ---
+# Functions
 def add_user():
     global current_active_user
     name,age,weight,height,cond=u_name_box.get().strip(),u_age_box.get().strip(),u_weight_box.get().strip(),u_height_box.get().strip(),u_cond_box.get()
@@ -130,7 +130,7 @@ def show_chart(e,s,n,f):
     fig.tight_layout()
     FigureCanvasTkAgg(fig,master=chart_area).get_tk_widget().pack(fill=tk.BOTH,expand=True)
 
-# --- GUI SETUP ---
+# GUI setup
 root=tk.Tk()
 root.title("Health and Food Analyzer")
 root.geometry("1000x850")
@@ -141,7 +141,7 @@ tabs.pack(fill=tk.BOTH,expand=True,padx=10,pady=10)
 tab_profile=tk.Frame(tabs);tab_analyzer=tk.Frame(tabs);tab_history=tk.Frame(tabs)
 tabs.add(tab_profile,text=" User Profile ");tabs.add(tab_analyzer,text=" Food Analyzer ");tabs.add(tab_history,text=" History ")
 
-# Tab 1: Profile
+# Tab 1: Profile section
 tk.Label(tab_profile,text="User Name").grid(row=0,column=0,padx=20,pady=10,sticky="w")
 u_name_box=tk.Entry(tab_profile,width=40);u_name_box.grid(row=0,column=1,padx=20,pady=10)
 tk.Label(tab_profile,text="Age").grid(row=1,column=0,padx=20,pady=10,sticky="w")
@@ -154,7 +154,7 @@ tk.Label(tab_profile,text="Condition").grid(row=4,column=0,padx=20,pady=10,stick
 u_cond_box=ttk.Combobox(tab_profile,values=CONDITIONS_LIST,state="readonly",width=37);u_cond_box.current(0);u_cond_box.grid(row=4,column=1,padx=20,pady=10)
 tk.Button(tab_profile,text="Save User Profile",command=add_user).grid(row=5,column=1,pady=20,sticky="e")
 
-# Tab 2: Analyzer
+# Tab 2: Analyzer section
 analyzer_main=tk.Frame(tab_analyzer);analyzer_main.pack(fill=tk.BOTH,expand=True)
 left_side=tk.Frame(analyzer_main);left_side.pack(side=tk.LEFT,fill=tk.BOTH,expand=True,padx=10)
 tk.Label(left_side,text="Enter Packaged Food Nutrition Below:",font=("Arial",10,"bold")).grid(row=0,column=0,columnspan=2,sticky="w",pady=10)
@@ -172,7 +172,7 @@ tk.Button(left_side,text="Analyze Food",command=analyze_and_add).grid(row=6,colu
 res_text=tk.Text(left_side,height=12,width=45,wrap=tk.WORD);res_text.grid(row=8,column=0,columnspan=2,pady=5)
 chart_area=tk.Frame(analyzer_main,width=400,height=400);chart_area.pack(side=tk.RIGHT,fill=tk.BOTH,expand=True)
 
-# Tab 3: History
+# Tab 3: History section
 tree=ttk.Treeview(tab_history,columns=("User","Score","Date"),show="headings")
 for col in ("User","Score","Date"):tree.heading(col,text=col);tree.column(col,width=150)
 tree.pack(fill=tk.BOTH,expand=True,padx=10,pady=10)
